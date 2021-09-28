@@ -1,0 +1,25 @@
+<div
+  class="form-group row"
+  ng-class="$ctrl.service.result.errors[$ctrl.name] ? 'has-error' : ''"
+  style="margin-bottom: 1.5rem"
+>
+  <label class="col-form-label col-12 col-lg-3 form-label text-lg-right">
+    {{ $ctrl.label || ($ctrl.name | humanize) }}
+    <span class="color-danger-600" ng-if="$ctrl.required">*</span>
+  </label>
+
+  <div class="col-12 col-lg-{{ $ctrl.secondColumnSize || 6 }} ">
+    <div
+      ng-transclude
+      ng-class="$ctrl.service.result.errors[$ctrl.name] ? 'is-invalid' : ''"
+    ></div>
+
+    <div
+      class="invalid-feedback"
+      ng-show="$ctrl.service.result.errors[$ctrl.name]"
+      ng-bind="$ctrl.service.result.errors[$ctrl.name]"
+    ></div>
+
+    <div ng-transclude="note"></div>
+  </div>
+</div>

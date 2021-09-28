@@ -1,0 +1,61 @@
+<div class="row mb-3" style="align-items: center;">
+  <div class="col-xs-12 col-sm-4 action-bar">
+    <label class="mgr-5 actionBlock" ng-show="model.actions && isAccess">
+        <span class="paging-view-text">Actions&nbsp;</span>
+        <label class="select">
+            <div class="form-label">
+                <select class="form-control input-sm" autocomplete="off" ng-model="model.action">
+                    <option value=""></option>
+                    <option ng-repeat="(key, value) in model.actions"
+                            ng-value="key | lowercase"
+                            ng-show="hasAccess(value)">
+                        {{ key | humanize }}
+                    </option>
+                </select>
+            </div>
+        </label>
+        <button class="btn btn-primary"
+            ng-click="model.fireAction()"
+            ng-disabled="model.action == '' || model.ids.length == 0"
+            style="height: 36px;margin-top: -3px;">
+            Submit
+        </button>
+    </label>
+  </div>
+
+  <div class="col-sm-8 col-xs-12 text-right toolbar-right">
+    <label>
+        <span class="paging-view-text">
+            Results / <span class="">{{ model.paging.total }}</span> Items&nbsp;
+        </span>
+    </label>
+
+    <label ng-show="model.showPaging" class="ml-2">{{ model.showPaging  ? 'View' : '' }}</label>
+
+    <label class="ml-1" ng-show="model.showPaging">
+        <div class="form-label">
+            <select name="dt_basic_length"
+                    class="form-control input-sm"
+                    ng-model="model.filters.size"
+                    ng-change="model.filters.page=1;model.load()">
+                <option ng-repeat="option in model.pageSizes"
+                        ng-value="{{option}}">{{option}} Items</option>
+            </select>
+        </div>
+    </label>
+
+    <label class="ml-2">
+      <ul class="pagination pagination-sm" ng-show="model.showPaging">
+        <li class="page-item" ng-class="model.paging.page == 1 ? 'disabled' : ''">
+            <a href="javascript:;" class="page-link" ng-click="model.previousPage()"><i class="fa fa-chevron-left"></i></a>
+        </li>
+        <li class="page-item pagination-info" style="margin-top: 4px;">
+            <span>Page {{ model.paging.page }} of {{ model.paging.lastPage }}</span>
+        </li>
+        <li class="page-item" ng-class="model.paging.lastPage ==  model.paging.page ? 'disabled' : ''">
+            <a href="javascript:;" class="page-link" ng-click="model.nextPage()"><i class="fa fa-chevron-right"></i></a>
+        </li>
+      </ul>
+    </label>
+  </div>
+</div>

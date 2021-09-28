@@ -1,0 +1,26 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service" change="$ctrl.change()"
+  permissions="{{ $ctrl.permissions }}" ng-hide="$ctrl.ishide == 'true'">
+
+  <div class="multi-checkbox">
+    <div ng-show="$ctrl.data">
+      <input type="text" class="form-control" placeholder="Search..." ng-model="search" />
+    </div>
+    <div class="tree-fix-boxed">
+      <div class="custom-control custom-checkbox mt-2" ng-repeat="item in $ctrl.data | filter: search">
+        <input id="chk{{$ctrl.name+'_'+item.id}}"
+          type="checkbox"
+          class="custom-control-input"
+          checklist-model="$ctrl.service.dto[$ctrl.name]"
+          checklist-value="item.id">
+        <label for="chk{{$ctrl.name+'_'+item.id}}" class="custom-control-label">{{ item.name }}</label>
+      </div>
+
+      <div style="font-size: 18px; height: 100%; display: flex; align-items: center; justify-content: center; color: #ccc;" ng-hide="$ctrl.data">
+        No {{ $ctrl.label || ($ctrl.name | humanize) }}
+      </div>
+    </div>
+  </div>
+
+  <control-base-note ng-transclude />
+
+</control-base>

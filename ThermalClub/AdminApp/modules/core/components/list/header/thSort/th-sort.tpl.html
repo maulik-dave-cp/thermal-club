@@ -1,0 +1,6 @@
+﻿<th style="{{ width ? 'width: ' + width + 'px' : '' }}"
+    class="text-{{ align }} {{ model.setSortingClass(model, name) }}"
+    ng-click=" model ? model.sort($event, name) : null"
+    ng-show="isAccess"
+    ng-transclude>
+</th>

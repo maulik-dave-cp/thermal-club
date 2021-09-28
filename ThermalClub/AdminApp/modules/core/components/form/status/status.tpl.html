@@ -1,0 +1,7 @@
+<control-base name="isActive" label="Status" required="true" service="$ctrl.service">
+  <select class="form-control" ng-init="$ctrl.service.dto.isActive = $ctrl.service.dto.isActive || true"
+    ng-model="$ctrl.service.dto.isActive" id="dataStatus" data-empty="false">
+    <option ng-value="true">{{$ctrl.activetext || 'Active'}}</option>
+    <option ng-value="false">{{$ctrl.inactivetext || 'Inactive'}}</option>
+  </select>
+</control-base>

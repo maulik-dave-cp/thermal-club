@@ -1,0 +1,14 @@
+<th class="hasinput" style="vertical-align: middle;">
+  <div class="form-label">
+    <select class="form-control"
+            id="{{ name }}"
+            autocomplete="off"
+            ng-model="model.filters[name]"
+            ng-change="model.load(true)">
+      <option value="" disabled selected>Status</option>
+      <!-- <option value=""></option> -->
+      <option value="true">Sent</option>
+      <option value="false">Pending</option>
+    </select>
+  </div>
+</th>

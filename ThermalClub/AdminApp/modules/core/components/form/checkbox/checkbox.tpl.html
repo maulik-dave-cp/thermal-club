@@ -1,0 +1,19 @@
+﻿<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service" second-column-size="{{$ctrl.secondColumnSize}}">
+
+  <div class="custom-control custom-checkbox mt-2">
+      <input id="{{ $ctrl.name }}" type="checkbox"
+        class="custom-control-input"
+        checked="checked"
+        ng-model="$ctrl.service.dto[$ctrl.name]">
+      <label class="custom-control-label" for="{{ $ctrl.name }}">
+        {{ $ctrl.checkboxLabel }}
+      </label>
+  </div>
+
+  <control-base-note ng-transclude/>
+
+</control-base>
+
+
+
+

@@ -1,0 +1,32 @@
+<control-base
+  name="{{ $ctrl.name }}"
+  label="{{ $ctrl.label }}"
+  required="{{ $ctrl.required }}"
+  service="$ctrl.service">
+
+  <div class="input-group">
+    <div class="input-group-prepend">
+        <a href="javascript:;" class="btn btn-outline-default waves-effect waves-themed" ng-click="$ctrl.browseFiles()"><i class="fa fa-file-image-o"></i>&nbsp;  Browse Files</a>
+    </div>
+    <input id="{{$ctrl.name}}"
+      class="form-control"
+      placeholder="{{ $ctrl.label || ($ctrl.name | humanize) }}"
+      type="text"
+      ng-model="$ctrl.service.dto[$ctrl.name]"
+      readonly ng-hide>
+
+
+    <div class="input-group-append">
+      <a href="javascript:;" class="btn btn-outline-danger waves-effect waves-themed" ng-click="$ctrl.removeFile()" ng-show="$ctrl.service.dto[$ctrl.name]"><i class="fa fa-trash-o"></i>
+        <i class="fa fa-trash"></i>
+        &nbsp;  Remove</a>
+      <a class="btn btn-outline-info waves-effect waves-themed"
+            target="_blank"
+            ng-href="{{ $ctrl.service.dto[$ctrl.name] }}"
+            ng-show="$ctrl.service.dto[$ctrl.name]">
+            <i class="fa fa-globe"></i>&nbsp; Preview
+          </a>
+    </div>
+  </div>
+    <small class="help-block" ng-show="$ctrl.service.result.errors[$ctrl.name]" ng-bind="$ctrl.service.result.errors[$ctrl.name]"></small>
+</control-base>

@@ -1,0 +1,11 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service" change="$ctrl.change()"
+  permissions="{{ $ctrl.permissions }}" ng-hide="$ctrl.ishide == 'true'">
+  
+  <div class="form-label">
+    <select class="form-control" ng-model="$ctrl.service.dto[$ctrl.name]" id="{{$ctrl.name}}" ng-change="$ctrl.change()" ng-disabled="$ctrl.isdisable == 'true'">
+      <option ng-repeat="item in $ctrl.data" ng-value="item.id" ng-bind="item.name"></option>
+    </select>
+    <control-base-note ng-transclude />
+  </div>
+
+</control-base>

@@ -1,0 +1,14 @@
+<legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">
+  Admin User Information
+</legend>
+<textbox name="name" maxlength="100" required="true" service="aj"></textbox>
+<textbox name="email" maxlength="100" required="true" service="aj"></textbox>
+<textbox type="password" name="password" maxlength="20" required="true" service="aj">
+  <small class="note" ng-if="editMode">
+    <strong>Note:</strong> Please leave it blank if you don't want to change password.
+  </small>
+</textbox>
+
+<multi-checkbox name="roles" data="roles" required="true" service="aj"></multi-checkbox>
+
+<status service="aj"></status>

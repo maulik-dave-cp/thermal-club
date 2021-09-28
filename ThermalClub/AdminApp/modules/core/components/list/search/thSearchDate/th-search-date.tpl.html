@@ -1,0 +1,12 @@
+<th class="hasinput">
+    <div class="input-group">
+      <input type="text" id="from-date-{{$id}}" ng-model="model.filters['from' + name]" ng-change="model.load(true)"
+               class="form-control datepicker" data-dateformat="mm/dd/yy" placeholder="From">
+      <div class="input-group-append"><span class="input-group-text fs-xl"><i class="fal fa-calendar"></i></span></div>
+    </div>
+    <div class="input-group form-label">
+        <input type="text" id="to-date-{{$id}}" ng-model="model.filters['to' + name]" ng-change="model.load(true)"
+               class="form-control datepicker" data-dateformat="mm/dd/yy" placeholder="To">
+        <div class="input-group-append"><span class="input-group-text fs-xl"><i class="fal fa-calendar"></i></span></div>
+    </div>
+</th>

@@ -1,0 +1,95 @@
+<layout-header icon="cog" breadcrumb="['System', 'Permissions', 'Admin Roles']">
+  <button-back state="adminRoles"></button-back>
+</layout-header>
+
+<panel>
+  <legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">
+    Admin Role Information
+  </legend>
+
+  <textbox name="name" maxlength="100" required service="aj"></textbox>
+
+  <control-base
+    name="permissions"
+    label="Permissions"
+    required="false"
+    service="aj">
+
+    <div class="tree-fix-boxed">
+
+      <div id="nestable-menu">
+        <button type="button" class="btn btn-brder" ng-click="expandAll()">
+          Expand All
+        </button>
+        <button type="button" class="btn btn-brder" ng-click="collapseAll()">
+          Collapse All
+        </button>
+      </div>
+
+      <script type="text/ng-template" id="nodes_renderer.html">
+        <button data-action="collapse" type="button" ng-if="node.nodes && node.nodes.length > 0 && !collapsed" ng-click="toggle(this)">Collapse</button>
+          <button data-action="expand" type="button" ng-if="node.nodes && node.nodes.length > 0 && collapsed" ng-click="toggle(this)">Expand</button>
+
+          <div class="dd3-content">
+              <div class="checkbox" ng-class="{'last': node.nodes.length == 0}">
+                      <input id="{{node.id}}" type="checkbox" class="checkbox style-0" checklist-model="aj.dto.permissions" checklist-value="node.id" />
+                      <label for="{{node.id}}"> <span></span>{{ node.displayName }}</label>
+              </div>
+          </div>
+          <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+              <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'" class="dd-item dd3-item">
+              </li>
+          </ol>
+      </script>
+
+      <div ui-tree>
+        <ol ui-tree-nodes="" ng-model="permissions" id="tree-root">
+          <li ng-repeat="node in permissions" ui-tree-node ng-include="'nodes_renderer.html'" class="dd-item dd3-item"></li>
+        </ol>
+      </div>
+
+      <div style="font-size: 18px; height: 100%; display: flex; align-items: center; justify-content: center; color: #ccc;"
+        ng-hide="permissions">
+        No permissions
+      </div>
+    </div>
+
+    <control-base-note ng-transclude />
+  </control-base>
+
+  <legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">
+    Store Permissions Information
+  </legend>
+
+  <checkbox name="hasAllStoreAccess" label="All Store Access?" required="true" service="aj"></checkbox>
+
+  <div ng-hide="aj.dto.hasAllStoreAccess">
+    <control-base
+      name="stores"
+      label="Stores"
+      required="false"
+      service="aj">
+
+      <div class="tree-fix-boxed">
+
+        <div class="custom-control custom-checkbox pb-2" ng-repeat="node in stores" >
+          <input type="checkbox" class="custom-control-input" id="store-{{node.id}}" checklist-model="aj.dto.stores" checklist-value="node.id">
+          <label class="custom-control-label" for="store-{{node.id}}">{{ node.name }}</label>
+        </div>
+
+        <div style="font-size: 18px; height: 100%; display: flex; align-items: center; justify-content: center; color: #ccc;"
+          ng-hide="stores">
+          No stores
+        </div>
+      </div>
+
+      <control-base-note ng-transclude />
+    </control-base>
+  </div>
+
+  <form-actions>
+    <save click="aj.save()"></save>
+    <save-continue click="aj.saveContinue()" permissions="adminRoles.edit"></save-continue>
+    <save-new click="aj.saveNew()"></save-new>
+  </form-actions>
+</panel>

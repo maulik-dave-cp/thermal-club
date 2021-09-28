@@ -1,0 +1,38 @@
+<h1 class="fw-300 mb-3">
+	Sign In
+</h1>
+<div class="card p-4 rounded-plus bg-faded">
+
+    <message result="result"></message>
+
+		<div class="form-group">
+			<label class="form-label" for="email">Email</label>
+      <input type="email" id="Email" name="Email" class="bg-white form-control" ng-model="dto.email" placeholder="Enter your email address"
+      ng-class="result.errors.email ? 'is-invalid' : ''">
+      <div class="invalid-feedback" ng-show="result.errors.email" ng-bind="result.errors.email"></div>
+    </div>
+
+    <div class="form-group">
+			<label class="form-label" for="password">Password</label>
+      <input type="password" id="Password" name="Password" class="bg-white form-control" ng-model="dto.password" placeholder="Enter your password"
+      ng-class="result.errors.password ? 'is-invalid' : ''">
+      <div class="invalid-feedback" ng-show="result.errors.password" ng-bind="result.errors.password"></div>
+      <div class="note mt-1">
+        <a ui-sref="forgotPassword">Forgot your password?</a>
+      </div>
+    </div>
+
+    <div class="form-group text-left">
+      <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="rememberme" ng-model="dto.isRememberMe" name="isRememberMe" value="1">
+          <label class="custom-control-label" for="rememberme"> Remember me for the next 30 days</label>
+      </div>
+    </div>
+
+		<div class="row no-gutters text-right">
+			<div class="col">
+        <button type="submit" class="btn btn-primary" ng-click="submit()">Sign In</button>
+			</div>
+		</div>
+
+</div>

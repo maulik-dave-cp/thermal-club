@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>@ViewData["Title"] | Admin</title>
+    <base href="@Url.Content("~/")">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/dist/admin/css/vendor.css")?v=@(DateTime.Now.Ticks)">
+    <link rel="stylesheet" media="screen, print" href="@Url.Content("~/dist/admin/css/app.css")?v=@(DateTime.Now.Ticks)">
+    
+
+    <script>
+        var virtualDir = '@Url.Content("~/")';
+        var assetsPath = '@Url.Content("~/")';
+        var assetsAdminPath = '@Url.Content("~/dist/admin/")';
+    </script>
+</head>
+<body ng-class="{'mod-nav-link': loggedIn}" ng-controller="BodyController">
+
+    <ui-view></ui-view>
+
+    <script src="https://cdn.ckeditor.com/4.15.1/full-all/ckeditor.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
+    <script src="@Url.Content("~/dist/admin/js/vendor.js")?v=@(DateTime.Now.Ticks)"></script>
+    <script src="@Url.Content("~/dist/admin/js/app.js")?v=@(DateTime.Now.Ticks)"></script>
+    <script src="@Url.Content("~/dist/admin/js/template.js")?v=@(DateTime.Now.Ticks)"></script>
+</body>
+</html>

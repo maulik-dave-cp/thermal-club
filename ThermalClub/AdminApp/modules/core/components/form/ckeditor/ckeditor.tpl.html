@@ -1,0 +1,12 @@
+﻿<control-base name="{{ $ctrl.name }}"
+  label="{{ $ctrl.label }}"
+  required="{{ $ctrl.required }}"
+  service="$ctrl.service"
+  second-column-size="6"
+  hide-remove-icon="true">
+
+  <div ckeditor="$ctrl.options" ng-model="$ctrl.service.dto[$ctrl.name]"></div>
+
+  <control-base-note ng-transclude/>
+
+</control-base>

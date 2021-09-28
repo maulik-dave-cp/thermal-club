@@ -1,0 +1,21 @@
+<section class="cmn-sequence">
+  <div class="clearfix fix-wrap">
+    <layout-header icon="wrench" breadcrumb="['Admin Permissions']">
+      <button-back state="adminPermissions"></button-back>
+    </layout-header>
+
+    <div class="page-title">Sequencing</div>
+
+    <!-- <pre>{{ permissions | json }}</pre> -->
+
+    <div ng-repeat="item in permissions">
+      {{item.displayName}}
+    </div>
+
+    <div ng-nestable ng-model="permissions">
+      {{$item.displayName}} - [{{$item.name}}]
+    </div>
+
+    <div class="clearfix"></div>
+  </div>
+</section>

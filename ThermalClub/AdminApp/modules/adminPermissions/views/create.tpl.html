@@ -1,0 +1,58 @@
+<section class="create-wrap admin-rolePage">
+
+  <form class="form-horizontal" autocomplete="off" novalidate>
+    <div class="clearfix fix-wrap">
+      <layout-header icon="wrench" breadcrumb="['Add Admin Permissions']">
+        <button-back state="adminPermissions"></button-back>
+      </layout-header>
+
+      <fieldset>
+        <div class="page-title">Admin Permission Information</div>
+
+        <div class="form-group" ng-class="aj.result.errors.isParentSelected ? 'has-error' : ''">
+          <div class="col-md-12">
+            <div class="checkbox ng-scope">
+              <input id="noParent" type="radio" name="isParentSelected" value="false" ng-model="aj.dto.isParentSelected" checked="checked" ng-change="changeParentSelected(aj.dto.isParentSelected)">
+              <label for="noParent"><span><span></span></span>No parent (this permission will be at the top level)</label>
+            </div>
+            <i class="form-control-feedback glyphicon glyphicon-remove ng-hide" ng-show="result.errors.isParentSelected"></i>
+            <small class="help-block ng-binding ng-hide" ng-show="aj.result.errors.isParentSelected" ng-bind="aj.result.errors.isParentSelected"></small>
+          </div>
+        </div>
+
+        <div class="form-group" ng-class="aj.result.errors.isParentSelected ? 'has-error' : ''">
+          <div class="col-md-12">
+            <div class="checkbox ng-scope">
+              <input id="parentSelect" type="radio" name="isParentSelected" ng-model="aj.dto.isParentSelected" value="true" ng-change="changeParentSelected(aj.dto.isParentSelected)">
+              <label for="parentSelect"><span><span></span></span>Select a parent permission</label>
+            </div>
+            <i class="form-control-feedback glyphicon glyphicon-remove ng-hide" ng-show="result.errors.IsParentSelected"></i>
+            <small class="help-block ng-binding ng-hide" ng-show="aj.result.errors.isParentSelected" ng-bind="aj.result.errors.isParentSelected"></small>
+          </div>
+        </div>
+
+        <control-base name="parentId" required="true" service="aj">
+          <div class="form-label custom-select">
+            <select class="form-control" id="parentId" ng-model="aj.dto.parentId" data-empty="false">
+              <option value=""></option>
+              <option ng-repeat="item in permissionsData" ng-value="item.id" ng-bind="item.displayName" id="item.name"></option>
+            </select>
+            <label for="item.name">Permission</label>
+          </div>
+        </control-base>
+
+        <!-- <select-box name="parentId" required="true" label="Permission" data="permissions" service="aj"></select-box> -->
+        <textbox name="name" label="System Name" maxlength="100" required="true" service="aj"></textbox>
+        <textbox name="displayName" maxlength="20" required="true" service="aj"></textbox>
+      </fieldset>
+
+    </div>
+
+    <form-actions>
+      <save click="aj.save()"></save>
+      <save-continue click="aj.saveContinue()" permissions="adminPermissions.edit"></save-continue>
+      <save-new click="aj.saveNew()"></save-new>
+    </form-actions>
+
+  </form>
+</section>

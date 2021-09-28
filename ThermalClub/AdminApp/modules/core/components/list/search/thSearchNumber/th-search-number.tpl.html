@@ -1,0 +1,16 @@
+﻿<th class="hasinput">
+    <div class="mgb-5">
+        <input type="text" 
+               ng-model="model.filters['from' + name]" 
+               placeholder="From" 
+               ng-keyup="$event.keyCode == 13 ? model.load(true) : null"
+               class="form-control">
+    </div>
+    <div>
+        <input type="text" 
+               ng-model="model.filters['to' + name]" 
+               placeholder="To" 
+               ng-keyup="$event.keyCode == 13 ? model.load(true) : null"
+               class="form-control">
+    </div>
+</th>

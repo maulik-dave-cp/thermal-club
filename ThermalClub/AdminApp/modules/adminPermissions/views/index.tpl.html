@@ -1,0 +1,53 @@
+<section class="admin-user-wrap">
+  <div class="clearfix fix-wrap">
+    <layout-header icon="wrench" breadcrumb="['Admin Permissions']">
+      <div class="row" style="padding-bottom: 15px;">
+        <div class="col-md-12 text-right">
+          <button-sequence state="adminPermissionsSequence" permissions="adminPermissions.sequence">Sequence</button-sequence>
+        </div>
+      </div>
+    </layout-header>
+
+    <grid>
+      <toolbar model="list" permissions="adminPermissions.edit,adminPermissions.delete">
+        <button-add state="adminPermissionsCreate" permissions="adminPermissions.create">Admin Permission</button-add>
+      </toolbar>
+
+      <div style="width: 100%;overflow-x: auto;padding-bottom: 1px;">
+        <table class="table table-striped dataTable table-hover">
+
+          <thead>
+            <tr>
+              <th th-search permissions="adminPermissions.edit,adminPermissions.delete"></th>
+              <th th-search name="displayName" model="list"></th>
+              <th th-search name="name" model="list" label="System Name"></th>
+              <th th-search permissions="adminPermissions.edit,adminPermissions.delete"></th>
+            </tr>
+            <tr>
+              <th th-sort-select-all model="list" permissions="adminPermissions.edit,adminPermissions.delete"></th>
+              <th th-sort name="displayName" model="list">Display Name</th>
+              <th th-sort name="name" model="list">System Name</th>
+              <th th-sort-action permissions="adminPermissions.edit,adminPermissions.delete"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="item in list.data">
+              <td cell-checkbox-id model="list" item="item" permissions="adminPermissions.edit,adminPermissions.delete"></td>
+              <td cell>{{ ' | - ' | repeat:item.depth }}{{ item.displayName }}</td>
+              <td cell>{{ item.name }}</td>
+              <td cell align="center" permissions="adminPermissions.edit,adminPermissions.delete">
+                <action-edit state="adminPermissionsEdit({id: {{ item.id }} })" permissions="adminPermissions.edit"></action-edit>&nbsp;&nbsp;
+                <action-delete click="list.deleteRow(item.id)" permissions="adminPermissions.delete"></action-delete>
+              </td>
+            </tr>
+
+            <tr row-no-records model="list"></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </grid>
+    <pager model="list"></pager>
+  </div>
+</section>

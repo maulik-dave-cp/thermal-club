@@ -1,0 +1,11 @@
+<th class="hasinput" style="vertical-align: middle;" ng-show="isAccess">
+    <div class="form-label">
+      <input type="text"
+             class="form-control"
+             ng-model="model.filters[name]"
+             ng-keyup="$event.keyCode == 13 ? model.load(true) : null"
+             ng-hide="model==undefined"
+             placeholder="{{ label || (name | humanize) }}"
+             autocomplete="off" id="{{name}}">
+    </div>
+</th>

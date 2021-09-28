@@ -1,0 +1,13 @@
+<layout-header icon="cog" breadcrumb="['System', 'Permissions', 'Admin Users']">
+  <button-back state="adminUsers"></button-back>
+</layout-header>
+
+<panel>
+  <div ng-include="'/adminUsers/views/_form.tpl.html'"></div>
+
+  <form-actions>
+    <save click="aj.save()"></save>
+    <save-continue click="aj.saveContinue()" permissions="adminUsers.edit"></save-continue>
+    <save-new click="aj.saveNew()"></save-new>
+  </form-actions>
+</panel>

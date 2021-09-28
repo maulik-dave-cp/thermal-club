@@ -1,0 +1,12 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service" isbuttonshow="{{ $ctrl.isbuttonshow }}">
+  <div class="form-label">
+    <input class="form-control"
+           type="{{$ctrl.type || 'text'}}"
+           ng-attr-maxlength="{{$ctrl.maxlength || undefined}}"
+           ng-model="$ctrl.service.dto[$ctrl.name]"
+           allow-numbers-only
+           ng-disabled="$ctrl.disabledIf" id="{{$ctrl.name}}" />
+    <control-base-note ng-transclude />
+  </div>
+
+</control-base>

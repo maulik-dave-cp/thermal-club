@@ -1,0 +1,11 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service">
+  <div class="form-label">
+    <textarea class="form-control"
+              msd-elastic
+              data-maxlength 
+              rows="4"
+              ng-attr-maxlength="{{$ctrl.maxlength || undefined}}"
+              ng-model="$ctrl.service.dto[$ctrl.name]" ></textarea>
+    <control-base-note ng-transclude />
+  </div>
+</control-base>

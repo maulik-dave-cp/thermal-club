@@ -1,0 +1,62 @@
+<layout-header icon="cog" breadcrumb="['System', 'Error Logs']">
+</layout-header>
+
+<grid>
+  <toolbar model="list"></toolbar>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div style="width: 100%;overflow-x: auto;">
+        <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline">
+          <thead>
+            <tr>
+              <th width="30"></th>
+              <th></th>
+              <th th-search name="errorType" model="list"></th>
+              <th th-search name="description" model="list"></th>
+              <th th-search-date name="createdAt" label="Created At" model="list"></th>
+            </tr>
+            <tr>
+              <th></th>
+              <th name="isEmailSent" model="list" class="text-center" width="100">Email Status</th>
+              <th th-sort name="errorType" model="list" class="text-center" width="120">Error Type</th>
+              <th th-sort name="description" model="list" class="text-center">Description</th>
+              <th th-sort-date name="createdAt" model="list">Created Date</th>
+            </tr>
+          </thead>
+
+          <tbody ng-model="list.data">
+            <tr ng-repeat-start="item in list.data">
+              <td cell class="expand" ng-click="trShow[$index] = !trShow[$index]" align="center">
+                <i style="cursor: pointer;" class="fa" ng-class="trShow[$index] ? 'fa-minus-circle' : 'fa-plus-circle'"
+                  title="Expand"></i>
+              </td>
+              <td cell align="center">
+                <span class="badge badge-success badge-pill" ng-show="item.isEmailSent == 1">Yes</span>
+                <span class="badge badge-secondary badge-pill" ng-show="item.isEmailSent == 0">No</span>
+              </td>
+              <td cell align="center"> &nbsp;{{ item.errorType }}</td>
+              <td cell> &nbsp;{{ item.description }}</td>
+              <td cell-date item="item.createdAt"></td>
+            </tr>
+            <tr ng-repeat-end ng-show="trShow[$index]">
+              <td cell colspan="99" class="">
+                <table class="table table-bordered dataTable">
+                  <tr>
+                    <th class="text-left">Stack Trace</th>
+                  </tr>
+                  <tr>
+                    <td cell class="text-left">{{ item.stacktrace }}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr row-no-records model="list"></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</grid>

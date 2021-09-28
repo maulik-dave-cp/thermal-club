@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col">
+      <ol class="breadcrumb page-breadcrumb" style="margin-top: 8px;">
+        <li class="breadcrumb-item">
+          <i class="fal fa-{{ $ctrl.icon }} mr-1 fs-md" ng-show="$ctrl.icon"></i>
+          {{ $ctrl.breadcrumb[0] }}
+        </li>
+        <li class="breadcrumb-item" ng-repeat="item in $ctrl.breadcrumb" ng-if="$index > 0">{{ item }}</li>
+      </ol>
+  </div>
+  <div class="col text-right" ng-transclude>
+  </div>
+</div>

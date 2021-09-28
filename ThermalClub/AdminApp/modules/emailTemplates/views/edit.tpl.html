@@ -1,0 +1,187 @@
+<layout-header icon="edit" breadcrumb="['Contents', 'Stores']">
+  <button-back state="emailTemplates"></button-back>
+</layout-header>
+
+<panel>
+  <legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">
+    Email Template Info
+  </legend>
+
+  <textbox name="name" maxlength="100" required="true" service="aj"></textbox>
+  <textbox name="subject" maxlength="100" required="true" service="aj"></textbox>
+  <ckeditor name="content" service="aj"></ckeditor>
+
+
+  <legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">
+    Other Email Settings
+  </legend>
+
+  <div class="alert alert-primary">
+    <div class="d-flex flex-start w-100">
+        <div class="mr-2 hidden-md-down">
+            <span class="icon-stack icon-stack-lg">
+                <i class="base base-6 icon-stack-3x opacity-100 color-primary-500"></i>
+                <i class="base base-10 icon-stack-2x opacity-100 color-primary-300 fa-flip-vertical"></i>
+                <i class="fal fa-info icon-stack-1x opacity-100 color-white"></i>
+            </span>
+        </div>
+        <div class="d-flex flex-fill">
+            <div class="flex-fill">
+                <span class="h5">Email From Settings</span>
+                <br>
+                Leave it blank below fields if you want to use default settings.
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <textbox name="fromName" maxlength="100" service="aj"></textbox>
+  <textbox type="email" name="fromEmail" maxlength="256" service="aj"></textbox>
+
+  <div class="form-group row" ng-class="aj.result.errors.toEmails ? 'has-error' : ''" style="margin-bottom: 1.5rem">
+    <label class="col-form-label col-12 col-lg-3 form-label text-lg-right">
+      To Emails
+    </label>
+
+    <div class="col-12 col-lg-6 ">
+      <a class="btn btn-link" href="javascript:;" ng-click="addToEmail()">
+        <i class="fa fa-plus"></i>
+        Add To Email
+      </a>
+
+      <table class="table table-striped dataTable table-hover" ng-class="aj.result.errors.toEmails ? 'is-invalid' : ''">
+        <thead>
+          <tr>
+              <th th-sort width="30" align="center"></th>
+              <th th-sort width="60" align="center">Action</th>
+              <th th-sort>To Email</th>
+          </tr>
+          </thead>
+          <tbody ui-sortable="sortableOptions" ng-model="aj.dto.toEmails">
+          <tr ng-repeat="item in aj.dto.toEmails track by $index">
+              <td class="text-center drag"><i class="glyphicon glyphicon-sort"></i></td>
+              <td cell align="center">
+                <action-delete click="deleteRow(aj.dto.toEmails, $index)" model="list" item="item"></action-delete>
+              </td>
+              <td>
+                  <input class="form-control" placeholder="Value" type="text"
+                    ng-class="aj.result.errors['toEmails[' + $index + '].Email'] ? 'is-invalid' : ''"
+                    ng-attr-maxlength="100"
+                    ng-model="item.email">
+
+                  <div class="invalid-feedback"
+                        ng-show="aj.result.errors['toEmails[' + $index + '].Email']"
+                        ng-bind="aj.result.errors['toEmails[' + $index + '].Email']"></div>
+              </td>
+          </tr>
+
+          <tr ng-show="aj.dto.toEmails.length == 0">
+              <td class="text-center" colspan="99">No records</td>
+          </tr>
+          </tbody>
+      </table>
+
+      <div class="invalid-feedback" ng-show="aj.result.errors.toEmails" ng-bind="aj.result.errors.toEmails"></div>
+    </div>
+  </div>
+
+  <div class="form-group row" ng-class="aj.result.errors.ccEmails ? 'has-error' : ''" style="margin-bottom: 1.5rem">
+    <label class="col-form-label col-12 col-lg-3 form-label text-lg-right">
+      CC Emails
+    </label>
+
+    <div class="col-12 col-lg-6 ">
+      <a class="btn btn-link" href="javascript:;" ng-click="addCcEmail()">
+        <i class="fa fa-plus"></i>
+        Add CC Email
+      </a>
+
+      <table class="table table-striped dataTable table-hover" ng-class="aj.result.errors.ccEmails ? 'is-invalid' : ''">
+        <thead>
+          <tr>
+              <th th-sort width="30" align="center"></th>
+              <th th-sort width="60" align="center">Action</th>
+              <th th-sort>CC Email</th>
+          </tr>
+          </thead>
+          <tbody ui-sortable="sortableOptions" ng-model="aj.dto.ccEmails">
+          <tr ng-repeat="item in aj.dto.ccEmails track by $index">
+              <td class="text-center drag"><i class="glyphicon glyphicon-sort"></i></td>
+              <td cell align="center">
+                <action-delete click="deleteRow(aj.dto.ccEmails, $index)" model="list" item="item"></action-delete>
+              </td>
+              <td>
+                  <input class="form-control" placeholder="Value" type="text"
+                    ng-class="aj.result.errors['ccEmails[' + $index + '].Email'] ? 'is-invalid' : ''"
+                    ng-attr-maxlength="100"
+                    ng-model="item.email">
+
+                  <div class="invalid-feedback"
+                        ng-show="aj.result.errors['ccEmails[' + $index + '].Email']"
+                        ng-bind="aj.result.errors['ccEmails[' + $index + '].Email']"></div>
+              </td>
+          </tr>
+
+          <tr ng-show="aj.dto.ccEmails.length == 0">
+              <td class="text-center" colspan="99">No records</td>
+          </tr>
+          </tbody>
+      </table>
+
+      <div class="invalid-feedback" ng-show="aj.result.errors.ccEmails" ng-bind="aj.result.errors.ccEmails"></div>
+    </div>
+  </div>
+
+  <div class="form-group row" ng-class="aj.result.errors.bccEmails ? 'has-error' : ''" style="margin-bottom: 1.5rem">
+    <label class="col-form-label col-12 col-lg-3 form-label text-lg-right">
+      BCC Emails
+    </label>
+
+    <div class="col-12 col-lg-6 ">
+      <a class="btn btn-link" href="javascript:;" ng-click="addBccEmail()">
+        <i class="fa fa-plus"></i>
+        Add BCC Email
+      </a>
+
+      <table class="table table-striped dataTable table-hover" ng-class="aj.result.errors.bccEmails ? 'is-invalid' : ''">
+        <thead>
+          <tr>
+              <th th-sort width="30" align="center"></th>
+              <th th-sort width="60" align="center">Action</th>
+              <th th-sort>BCC Email</th>
+          </tr>
+          </thead>
+          <tbody ui-sortable="sortableOptions" ng-model="aj.dto.bccEmails">
+          <tr ng-repeat="item in aj.dto.bccEmails track by $index">
+              <td class="text-center drag"><i class="glyphicon glyphicon-sort"></i></td>
+              <td cell align="center">
+                <action-delete click="deleteRow(aj.dto.bccEmails, $index)" model="list" item="item"></action-delete>
+              </td>
+              <td>
+                  <input class="form-control" placeholder="Value" type="text"
+                    ng-class="aj.result.errors['bccEmails[' + $index + '].Email'] ? 'is-invalid' : ''"
+                    ng-attr-maxlength="100"
+                    ng-model="item.email">
+
+                  <div class="invalid-feedback"
+                        ng-show="aj.result.errors['bccEmails[' + $index + '].Email']"
+                        ng-bind="aj.result.errors['bccEmails[' + $index + '].Email']"></div>
+              </td>
+          </tr>
+
+          <tr ng-show="aj.dto.bccEmails.length == 0">
+              <td class="text-center" colspan="99">No records</td>
+          </tr>
+          </tbody>
+      </table>
+
+      <div class="invalid-feedback" ng-show="aj.result.errors.bccEmails" ng-bind="aj.result.errors.bccEmails"></div>
+    </div>
+  </div>
+
+  <form-actions>
+    <save click="aj.save()"></save>
+    <save-continue click="aj.saveContinue()"></save-continue>
+  </form-actions>
+</panel>

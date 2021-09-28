@@ -1,0 +1,90 @@
+<control-base 
+  name="{{ $ctrl.name }}" 
+  label="{{ $ctrl.label }}" 
+  required="{{ $ctrl.required }}" 
+  service="$ctrl.service">
+
+  <div class="input-group">
+    <div class="input-group-prepend">
+        <a href="javascript:;" class="btn btn-outline-default waves-effect waves-themed" ng-click="$ctrl.browseFiles()"><i class="fa fa-file-image-o"></i>&nbsp;  Browse Files</a>
+    </div>
+    <input id="{{$ctrl.name}}"
+      class="form-control"
+      placeholder="{{ $ctrl.label || ($ctrl.name | humanize) }}"
+      type="text"
+      ng-model="$ctrl.service.dto[$ctrl.name]"
+      readonly ng-hide>
+
+    
+    <div class="input-group-append">
+      <a href="javascript:;" class="btn btn-outline-danger waves-effect waves-themed" ng-click="$ctrl.removeFile()" ng-show="$ctrl.service.dto[$ctrl.name]"><i class="fa fa-trash-o"></i>
+        <i class="fa fa-trash"></i>
+        &nbsp;  Remove</a>
+      <a class="btn btn-outline-info waves-effect waves-themed"
+             target="_blank"
+             ng-href="{{ $ctrl.service.dto[$ctrl.name] }}"
+             ng-show="$ctrl.service.dto[$ctrl.name]">
+            <i class="fa fa-globe"></i>&nbsp; Preview
+          </a>
+    </div>
+  </div>
+
+  <small class="help-block" ng-show="$ctrl.service.result.errors[$ctrl.name]" ng-bind="$ctrl.service.result.errors[$ctrl.name]"></small>
+  <small class="help-block">
+    <div class="full-note note" ng-hide="$ctrl.noteWidth == null && $ctrl.noteHeight == null">
+      <strong>Note: </strong>
+      <span ng-show="$ctrl.noteWidth != null && $ctrl.noteHeight != null">
+        Please upload image file with a max width of {{ $ctrl.noteWidth }}px and max height of {{ $ctrl.noteHeight }}px.
+      </span>
+      <span ng-show="$ctrl.noteWidth != null && $ctrl.noteHeight == null">
+        Please upload image file with a max width of {{ $ctrl.noteWidth }}px.
+      </span>
+      <span ng-show="$ctrl.noteWidth == null && $ctrl.noteHeight != null">
+        Please upload image file with a max height of {{ $ctrl.noteHeight }}px.
+      </span>
+    </div>
+  </small>
+
+  <div ng-class="$ctrl.service.dto[$ctrl.name] ? 'div-img-bg' : 'div-img-preview'" ng-click="$ctrl.browseFiles()">
+    <div class="text-center" ng-hide="$ctrl.service.dto[$ctrl.name]">
+      <i class="fal fa-file-image fa-5x mb-3"></i>
+      <br>Click To Upload Image
+    </div>
+    <img alt="" ng-show="$ctrl.service.dto[$ctrl.name]" ng-src="{{ $ctrl.service.dto[$ctrl.name] }}" />
+  </div>
+  
+  <style>
+    .div-img-preview {width: 99.92%;border: 1px solid #ccc;display: flex;align-items: center;justify-content: center;color: #ccc;margin: 10px 0 0px; cursor: pointer;}
+    .has-error .div-img-preview {border: 1px solid #b94a48;}
+    .div-img-preview,
+.div-img-bg {
+  background-image: url(../img/image-upload-banner.jpg);
+  height: 439px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000000 !important;
+  margin-top: 20px;
+}
+.div-img-bg img {
+    width: auto;
+    max-width: 100%;
+    max-height: 439px;
+    margin: auto;
+    display: inline-block;
+  }
+  .div-img-bg .fa {
+    color: #000000;
+  }
+
+.div-img-bg {
+  background-color: #d8d8d8;
+  background-image: none;
+  line-height: 439px;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+}
+  </style>  
+
+</control-base>
+

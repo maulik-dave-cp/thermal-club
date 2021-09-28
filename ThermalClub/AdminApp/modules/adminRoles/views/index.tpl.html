@@ -1,0 +1,44 @@
+<layout-header icon="cog" breadcrumb="['System', 'Permissions', 'Admin Roles']">
+  <button-add state="adminRolesCreate" permissions="adminRoles.create">Admin Role</button-add>
+</layout-header>
+
+<grid>
+  <toolbar model="list" permissions="adminRoles.edit,adminRoles.delete"></toolbar>
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div style="width: 100%;overflow-x: auto;">
+        <table id="dt-basic-example"
+          class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline">
+          <thead>
+            <tr>
+              <th th-search permissions="adminRoles.edit,adminRoles.delete"></th>
+              <th th-search permissions="adminRoles.edit,adminRoles.delete"></th>
+              <th th-search name="name" model="list"></th>
+            </tr>
+            <tr>
+              <th th-sort-select-all model="list" permissions="adminRoles.edit,adminRoles.delete"></th>
+              <th th-sort-action permissions="adminRoles.edit,adminRoles.delete"></th>
+              <th th-sort name="name" model="list">Name</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="item in list.data">
+              <td cell-checkbox-id model="list" item="item" permissions="adminRoles.edit,adminRoles.delete"></td>
+              <td cell align="center" permissions="adminRoles.edit,adminRoles.delete">
+                <action-edit state="adminRolesEdit({id: {{ item.id }} })" permissions="adminRoles.edit"></action-edit>&nbsp;&nbsp;&nbsp;
+                <action-delete click="list.deleteRow(item.id)" permissions="adminRoles.delete"></action-delete>
+              </td>
+              <td cell>{{ item.name }}</td>
+            </tr>
+
+            <tr row-no-records model="list"></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</grid>

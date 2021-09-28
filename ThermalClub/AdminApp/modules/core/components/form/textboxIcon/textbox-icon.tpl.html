@@ -1,0 +1,18 @@
+﻿<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service">
+
+  <div class="input-group" ng-show="$ctrl.icon">
+    <input class="form-control"
+      placeholder="{{ $ctrl.label || ($ctrl.name | humanize) }}"
+      type="{{$ctrl.type || 'text'}}"
+      ng-attr-maxlength="{{$ctrl.maxlength || undefined}}"
+      ng-model="$ctrl.service.dto[$ctrl.name]"
+      ng-disabled="$ctrl.disabledIf" />
+
+      <div class="input-group-append">
+        <span class="input-group-text"><i class="fal fa-{{ $ctrl.icon }}"></i></span>
+      </div>
+  </div>
+
+  <control-base-note ng-transclude/>
+
+</control-base>

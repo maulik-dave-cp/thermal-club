@@ -1,0 +1,81 @@
+/* #IMPORTS ~~
+========================================================================== */
+@import './node_modules/bootstrap/scss/functions';
+@import './node_modules/bootstrap/scss/variables'; 
+@import './node_modules/bootstrap/scss/mixins';
+@import './AdminApp/assets/scss/_mixins/mixins'; 
+@import './AdminApp/assets/scss/_themes/_modules/variables';
+@import './AdminApp/assets/scss/_themes/_modules/_placeholders';
+
+
+/* #GLOBAL IMPORTS
+========================================================================== */
+/*@import '_imports/_global-import';*/
+
+/* #FRAMEWORK - Structure and layout files. (**DO NOT** change order)
+                DOC: you can disable unused _modules
+========================================================================== */
+/* contains root variables to be used with css (see docs) */
+/* html and body base styles */
+@import './AdminApp/assets/scss/_themes/_modules/_body';
+
+@import './AdminApp/assets/scss/_themes/_modules/_page-header';
+@import './AdminApp/assets/scss/_themes/_modules/_page-logo';
+@import './AdminApp/assets/scss/_themes/_modules/_page-search';
+@import './AdminApp/assets/scss/_themes/_modules/_dropdown-icon-menu';
+@import './AdminApp/assets/scss/_themes/_modules/_dropdown-notification';
+@import './AdminApp/assets/scss/_themes/_modules/_dropdown-app-list';
+@import './AdminApp/assets/scss/_themes/_modules/_header-function-fixed';
+@import './AdminApp/assets/scss/_themes/_modules/_left-panel';
+@import './AdminApp/assets/scss/_themes/_modules/_nav';
+@import './AdminApp/assets/scss/_themes/_modules/_nav-listfilter';
+@import './AdminApp/assets/scss/_themes/_modules/_nav-info-card';
+@import './AdminApp/assets/scss/_themes/_modules/_nav-function-top';
+@import './AdminApp/assets/scss/_themes/_modules/_nav-function-minify';
+@import './AdminApp/assets/scss/_themes/_modules/_nav-footer';
+@import './AdminApp/assets/scss/_themes/_modules/_page-wrapper';
+@import './AdminApp/assets/scss/_themes/_modules/_page-heading';
+@import './AdminApp/assets/scss/_themes/_modules/_page-footer';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-accordion';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-alerts';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-badge';
+//@import './AdminApp/assets/scss/_themes/_modules/_page-components-breadcrumb';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-buttons';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-navspills';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-cards';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-carousel';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-dropdowns';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-messanger';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-modal';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-panels';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-popovers';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-shortcut';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-tabs';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-custom-forms';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-pagination';
+@import './AdminApp/assets/scss/_themes/_modules/_page-components-listgroup';
+
+
+@import './AdminApp/assets/scss/_themes/_modules/_helpers';
+@import './AdminApp/assets/scss/_themes/_modules/_misc';
+@import './AdminApp/assets/scss/_themes/_modules/_hack';
+@import './AdminApp/assets/scss/_themes/_modules/_responsive';
+@import './AdminApp/assets/scss/_themes/_modules/_forms';
+@import './AdminApp/assets/scss/_themes/_modules/_settings-demo';
+@import './AdminApp/assets/scss/_themes/_modules/_settings-demo-incompatiblity-list';
+@import './AdminApp/assets/scss/_themes/_modules/_settings-demo-theme-colors';
+
+
+@import './AdminApp/assets/scss/_themes/_modules/_mod-nav-accessibility';
+@import './AdminApp/assets/scss/_themes/_modules/_colors';
+
+@import './AdminApp/assets/scss/_themes/_modules/_custom-bootstrap-varients';
+
+//we import plugins here
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-chartist';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-select2';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-datatables';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-datepicker';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-daterangepicker';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-ion.rangeslider';
+@import './AdminApp/assets/scss/_themes/_plugins/_plugins-pace';

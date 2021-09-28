@@ -1,0 +1,6 @@
+<div class="alert alert-{{ $parent.result.messageType | messageTypeOnBoard }} fade show"
+     ng-show="$parent.result.message">
+  <!--<a class="close" ng-click="close()">×</a>-->
+  <i class="fa-fw fa fa-{{ $parent.result.messageType | messageIcon }}"></i>
+  <span ng-bind-html="$parent.result.message"></span>
+</div>

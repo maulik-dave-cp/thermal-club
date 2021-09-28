@@ -1,0 +1,38 @@
+@import "_modules/variables";
+@import "./node_modules/bootstrap/scss/bootstrap";
+
+/* #app.icons
+========================================================================== */
+@import "app.icons";
+
+/* #Font Awesome Pro
+========================================================================== */
+@import "../custom/webfonts/fontawesome-pro-master/scss/light.scss";
+@import "../custom/webfonts/fontawesome-pro-master/scss/regular.scss";
+@import "../custom/webfonts/fontawesome-pro-master/scss/solid.scss";
+@import "../custom/webfonts/fontawesome-pro-master/scss/duotone.scss";
+@import "../custom/webfonts/fontawesome-pro-master/scss/brands.scss";
+
+/* #chartist-js
+========================================================================== */
+// @import "../custom/plugins/chartist/chartist.scss";
+
+// @import "../custom/plugins/datatables/datatables.styles.app.scss";
+// @import "./node_modules/toastr/toastr.scss";
+@import "../custom/plugins/toastr/toastr-custom.scss";
+// @import "../custom/plugins/sweetalert2/sweetalert2.scss";
+// @import "../custom/plugins/datepicker/datepicker-custom.scss";
+// @import "../custom/plugins/daterangepicker/daterangepicker-custom.scss";
+// @import "../custom/plugins/dropzone/dropzone-custom.scss";
+// @import "../custom/plugins/ion-rangeslider/ion.rangeslider-custom.scss";
+// @import "../custom/plugins/cropperjs/cropper-demo.scss";
+// @import "../custom/plugins/select2/select2-cust.scss";
+// @import "../custom/plugins/summernote/summernote-custom.scss";
+// @import "../custom/plugins/lightgallery/lightgallery.scss";
+@import "../custom/plugins/reactions/reactions.scss";
+// @import "../custom/plugins/jqvmap/jqvmap-cust.scss";
+// @import "../custom/plugins/nestable/nestable.scss";
+// @import "../custom/plugins/treeview/treeview.scss";
+
+@import "app.core.scss";
+@import "_skins/skin-master.scss";

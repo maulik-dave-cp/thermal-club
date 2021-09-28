@@ -1,0 +1,16 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service">
+  <div class="form-label">
+    <input class="form-control"
+           type="{{$ctrl.type || 'text'}}"
+           ng-attr-maxlength="{{$ctrl.maxlength || undefined}}"
+           ng-model="$ctrl.service.dto[$ctrl.name]"
+           ng-disabled="$ctrl.disabledIf" id="{{$ctrl.name}}" />
+    <control-base-note>
+      <span class="help-block">
+        <strong> Note: </strong>
+        Please enter page URL slug. Slug should be lowercase and should not have any empty space. Click here to <a href="javascript:;" ng-click="generateSlug()">Generate Slug</a> from {{ $ctrl.from }}.
+      </span>
+    </control-base-note>
+  </div>
+
+</control-base>

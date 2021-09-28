@@ -1,0 +1,57 @@
+
+
+<div class="row">
+    <div class="col">
+        <ol class="breadcrumb page-breadcrumb" style="margin-top: 8px;">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Aj Admin</a></li>
+            <li class="breadcrumb-item">Utilities</li>
+            <li class="breadcrumb-item active">Typography</li>
+            <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
+        </ol>
+    </div>
+    <div class="col text-right">
+        <a href="#" class="btn btn-secondary mr-1"><i class="far fa-long-arrow-alt-left mr-1"></i> Back to List</a>
+        <a href="#" class="btn btn-primary mr-1"><span class="far fa-save mr-1"></span> Save</a>
+        <a href="#" class="btn btn-danger mr-1"><span class="far fa-trash mr-1"></span> Delete</a>
+        <a href="#" class="btn btn-warning"><span class="far far fa-edit mr-1"></span> Save & Condtinue</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 col-xl-12">
+        <!--Heading Formats-->
+        <div id="panel-1" class="panel">
+            <div class="panel-container show">
+                <div class="panel-content">
+
+                    <legend style="border-bottom: 1px dashed rgba(0,0,0,.2);margin: 10px 0 20px;padding: 8px 0;font-size: 18px;">Page Information</legend>
+
+                    <textbox name="name" maxlength="100" required="true" service="aj"></textbox>
+                    <textbox-slug name="slug" maxlength="100" required="true" service="aj" from="name"></textbox-slug>
+                    <textbox-icon name="nameIcon" icon="trash" maxlength="100" required="true" service="aj"></textbox-icon>
+                    <checkbox name="enabled" label="Sending Mail" checkbox-label="Enable" service="aj"></checkbox>
+                    <ckeditor name="content" service="aj"></ckeditor>
+                    <select-box name="type" data="faqTypes" humanize="false" label="FAQ Type" required="true" service="aj"></select-box>
+                    <status service="aj"></status>
+                    <textbox-area name="metaDescription" maxlength="300" service="$ctrl.service">
+                        <p class="help-block"><strong>Note: </strong>Google can crawl up to 300 characters from description.</p>
+                    </textbox-area>
+                    <textbox-area-code name="metaExtraTags" maxlength="4000" service="$ctrl.service" label="Extra Meta Tags">
+                        <p class="note">
+                            <strong> Note: </strong> You can add more tags like below examples for Google, Facebook, twitter or any other search engine.<br>
+                            <code> &lt;meta name=&quot;keywords&quot; content=&quot;wood, furniture, garden, garden-table, etc.&quot;&gt; </code><br>
+                            <code> &lt;meta property=&quot;og:type&quot; content=&quot;article&quot; /&gt; </code><br>
+                            <code> &lt;meta name=&quot;robots&quot; content=&quot;noindex, nofollow&quot; /&gt; </code>
+                        </p>
+                    </textbox-area-code>
+                    <textbox-date name="dt" required="true" service="aj"></textbox-date>
+                    <textbox-decimal name="decimal" maxlength="100" required="true" service="aj"></textbox-decimal>
+                    <textbox-numeric name="number" maxlength="100" required="true" service="aj"></textbox-numeric>
+                    <textbox-file name="file" required="true" service="aj"></textbox-file>
+                    <textbox-image name="image" required="true" service="aj" note-width="600" note-height="800"></textbox-image>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

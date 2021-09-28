@@ -1,0 +1,47 @@
+<layout-header icon="cog" breadcrumb="['System', 'Temail Templates']">
+</layout-header>
+
+<grid>
+  <toolbar model="list" permissions="emailTemplates.edit">
+  </toolbar>
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div style="width: 100%;overflow-x: auto;">
+        <table id="dt-basic-example"
+          class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline">
+          <thead>
+            <tr>
+              <th th-search permissions="emailTemplates.edit"></th>
+              <th th-search name="name" model="list" label="Name"></th>
+              <th th-search-date class="date-box" name="createdAt" model="list"></th>
+              <th th-search-date class="date-box" name="updatedAt" model="list"></th>
+            </tr>
+
+            <tr>
+              <th th-sort-action permissions="emailTemplates.edit"></th>
+              <th th-sort name="name" model="list">Name</th>
+              <th th-sort-date name="createdAt" model="list">Created Date</th>
+              <th th-sort-date name="updatedAt" model="list">Updated Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="item in list.data">
+              <td cell align="center" permissions="emailTemplates.edit">
+                <action-edit state="emailTemplatesEdit({id: {{ item.id }} })" permissions="emailTemplates.edit"></action-edit>
+              </td>
+              <td cell>{{ item.name }}</td>
+              <td cell-date item="item.createdAt"></td>
+              <td cell-date item="item.updatedAt"></td>
+            </tr>
+            <tr row-no-records model="list"></tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+</grid>

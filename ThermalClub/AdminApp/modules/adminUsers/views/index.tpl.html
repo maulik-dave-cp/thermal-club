@@ -1,0 +1,66 @@
+<layout-header icon="cog" breadcrumb="['System', 'Permissions', 'Admin Users']">
+  <button-add state="adminUsersCreate" permissions="adminUsers.create">Admin User</button-add>
+</layout-header>
+
+<grid>
+    <toolbar model="list" permissions="adminUsers.edit,adminUsers.delete"></toolbar>
+
+    <div class="row">
+      <div class="col-sm-12">
+
+        <div style="width: 100%;overflow-x: auto;">
+          <table id="dt-basic-example"
+            class="table table-bordered table-hover table-striped w-100 dataTable dtr-inline">
+                <thead>
+                    <tr>
+                        <th th-search permissions="adminUsers.edit,adminUsers.delete"></th>
+                        <th th-search permissions="adminUsers.edit,adminUsers.delete"></th>
+                        <th th-search name="name" model="list"></th>
+                        <th th-search name="email" model="list"></th>
+                        <th th-search-select name="roleId" model="list" data="roles" label="Role"></th>
+                        <th th-search-status model="list"></th>
+                        <th th-search-date class="date-box" name="lastLoginAt" model="list"></th>
+                        <th th-search-date class="date-box" name="createdAt" model="list"></th>
+                    </tr>
+                    <tr>
+                        <th th-sort-select-all model="list" permissions="adminUsers.edit,adminUsers.delete"></th>
+                        <th th-sort-action permissions="adminUsers.edit,adminUsers.delete"></th>
+                        <th th-sort width="200" name="name" model="list">Name</th>
+                        <th th-sort name="email" model="list">Email</th>
+                        <th th-sort width="120" align="center">Role</th>
+                        <th th-sort-status model="list"></th>
+                        <th th-sort-date name="lastLoginAt" model="list">Last Login</th>
+                        <th th-sort-date name="createdAt" model="list">Created</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="item in list.data">
+                        <td cell-checkbox-id model="list" item="item" permissions="adminUsers.edit,adminUsers.delete"></td>
+                        <td cell align="center" permissions="adminUsers.edit,adminUsers.delete">
+                          <action-edit state="adminUsersEdit({id: {{ item.id }} })" permissions="adminUsers.edit"></action-edit>&nbsp;&nbsp;&nbsp;
+                          <action-delete click="deleteAlert()" permissions="adminUsers.delete">...</action-delete>
+                        </td>
+                        <td cell class="img-inline" gravatar="item.email"> &nbsp; {{ item.name }}</td>
+                        <td cell>{{ item.email }}</td>
+                        <td cell align="center">
+                            <span class="label" ng-repeat="role in item.adminRoles">{{ role.name }}</span>
+                        </td>
+                        <td cell-status item="item"></td>
+                        <td cell-date item="item.lastLoginAt"></td>
+                        <td cell-date item="item.createdAt"></td>
+                    </tr>
+
+                    <tr row-no-records model="list"></tr>
+                </tbody>
+            </table>
+        </div>
+
+      </div>
+    </div>
+</grid>
+<style>
+  .modal-dialog{
+    width: fit-content;
+  }
+</style>

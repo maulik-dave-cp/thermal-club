@@ -1,0 +1,25 @@
+<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service">
+
+  <div class="input-group">
+    <input type="text"
+            id="{{ $ctrl.label || ($ctrl.name ) }}"
+            class="form-control"
+            datetime-picker="MM/dd/yyyy"
+            ng-model="$ctrl.service.dto[$ctrl.name]"
+            is-open="picker.open"
+            enable-time="false"
+            datepicker-options="picker.datepickerOptions"
+            close-on-date-selection="true"
+            datepicker-append-to-body="true"
+            ng-click="openCalendar($event, 'picker')"
+            ng-change="changeDate($event, 'picker')"
+            save-as="true"/>
+
+    <div class="input-group-append" ng-click="openCalendar($event, 'picker')" style="cursor: pointer;">
+      <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+    </div>
+  </div>
+
+  <control-base-note ng-transclude/>
+
+</control-base>

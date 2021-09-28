@@ -1,0 +1,18 @@
+﻿<control-base name="{{ $ctrl.name }}" label="{{ $ctrl.label }}" required="{{ $ctrl.required }}" service="$ctrl.service">
+
+  <textarea class="form-control"
+    msd-elastic
+    ui-codemirror
+    ui-codemirror-opts="editorOptions"
+    rows="4"
+    placeholder="{{ $ctrl.label || $ctrl.name | humanize}}"
+    ng-class="$ctrl.service.dto[$ctrl.name] ? 'codeMirror-active' : ''"
+    ng-model="$ctrl.service.dto[$ctrl.name]"></textarea>
+
+  <control-base-note ng-transclude/>
+
+</control-base>
+
+<style>
+    .CodeMirror {height: 150px;border: 1px solid #ccc;}
+</style>
